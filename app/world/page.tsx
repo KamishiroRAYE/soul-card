@@ -33,13 +33,14 @@ export default function WorldPage() {
           <p>
             戦いの果てに刻まれるのが
             <strong className="text-gold-bright">〈神跡（しんせき）〉</strong>
-            ――神々の世界〈神世（かみよ）〉へと至る道のりを示す指標である。
-            神跡を極めた魂は神世へと
-            <strong className="text-foreground">昇格</strong>
-            し、敗れた魂の神世は静かに崩れ去る。これは、記録を巡る魂たちの終わらない物語だ。
+            ――至高の座
+            <strong className="text-gold-bright">〈神座（しんざ）〉</strong>
+            へと至る道のりを示す指標である。
+            神跡を極めた魂は神座へと辿り着き、力尽きた魂はその座から遠ざかっていく。
+            これは、記録を巡る魂たちの終わらない物語だ。
           </p>
           <Note>
-            ※ 上記はゲーム内の用語（記録・魂・神跡・神世への昇格）に沿った導入文です。
+            ※ 上記はゲーム内の用語（記録・魂・神跡・神座）に沿った導入文です。
             固有のキャラクター・地名・年代史などを加えたい場合は、設定を教えてください。
           </Note>
         </div>
@@ -103,7 +104,7 @@ export default function WorldPage() {
       <Section title="物語のはじまり">
         <div className="space-y-4 leading-relaxed text-foreground/90">
           <p>
-            ――かつてないほど記録が揺らいでいる。神世へ至る道が開かれた今、
+            ――かつてないほど記録が揺らいでいる。神座へ至る道が開かれた今、
             22の系譜は、それぞれの理想を懸けて魂をぶつけ合う。
           </p>
           <p>

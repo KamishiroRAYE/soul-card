@@ -39,12 +39,12 @@ export default function RulesPage() {
               <li>
                 自分の神跡を{" "}
                 <strong className="text-gold-bright">{VICTORY.win} まで高める</strong>
-                と勝利（＝神世への昇格）。
+                と勝利（＝神座への到達）。
               </li>
               <li>
                 神跡が{" "}
                 <strong className="text-gold-bright">{VICTORY.lose} になる</strong>
-                と敗北（＝神世の崩壊）。
+                と敗北。
               </li>
             </ul>
             <p className="mt-3 text-xs text-muted">
