@@ -5,7 +5,7 @@ export const NAV_LINKS = [
 ];
 
 export const SITE = {
-  title: "Sage Record - Soul Card",
-  titleJa: "セージレコード・ソウルカード",
+  title: "Soul Record - Soul Card",
+  titleJa: "ソウルレコード・ソウルカード",
   tagline: "22の系譜が織りなす、オリジナルTCG",
 };

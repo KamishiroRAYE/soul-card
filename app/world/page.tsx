@@ -4,7 +4,7 @@ import { ATTRIBUTES, LINEAGES } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "世界観",
-  description: "8つの属性、22の系譜が織りなす Sage Record - Soul Card の世界観。",
+  description: "8つの属性、22の系譜が織りなす Soul Record - Soul Card の世界観。",
 };
 
 export default function WorldPage() {
@@ -19,13 +19,28 @@ export default function WorldPage() {
       <Section title="この世界について">
         <div className="space-y-4 leading-relaxed text-foreground/90">
           <p>
-            ［ここに世界の成り立ちを書きます。タイトルの “Record（記録）” と “Soul（魂）”
-            が世界観の核です。たとえば「かつて世界のすべては〈記録〉として刻まれ、
-            魂を持つ者だけがその頁を書き換えられる」といった設定にすると、
-            ゲームの〈レコードフェーズ〉や〈ソウルユニット〉と物語が結びつきます。］
+            この世界に起きたすべての出来事は、ひとつ残らず
+            <strong className="text-gold-bright">〈記録（レコード）〉</strong>
+            として刻まれている。星の生まれた瞬間も、無数の戦いも、ひとつの想いも――
+            あらゆる事象は記録となって、世界という大きな書物に綴られていく。
+          </p>
+          <p>
+            その頁を書き換える力を持つのが、
+            <strong className="text-gold-bright">〈魂（ソウル）〉</strong>
+            を宿した者たちだ。彼らは記録に干渉し、自らの意志で世界の続きを描こうとする。
+            魂と魂がぶつかり合うとき、記録は揺らぎ、世界は新たな一頁を迎える。
+          </p>
+          <p>
+            戦いの果てに刻まれるのが
+            <strong className="text-gold-bright">〈神跡（しんせき）〉</strong>
+            ――神々の世界〈神世（かみよ）〉へと至る道のりを示す指標である。
+            神跡を極めた魂は神世へと
+            <strong className="text-foreground">昇格</strong>
+            し、敗れた魂の神世は静かに崩れ去る。これは、記録を巡る魂たちの終わらない物語だ。
           </p>
           <Note>
-            ※ この段落はプレースホルダです。あなたの設定を教えてもらえれば、本文に書き起こします。
+            ※ 上記はゲーム内の用語（記録・魂・神跡・神世への昇格）に沿った導入文です。
+            固有のキャラクター・地名・年代史などを加えたい場合は、設定を教えてください。
           </Note>
         </div>
       </Section>
@@ -88,10 +103,22 @@ export default function WorldPage() {
       <Section title="物語のはじまり">
         <div className="space-y-4 leading-relaxed text-foreground/90">
           <p>
-            ［プロローグ・あらすじをここに。短くてかまいません。“続きはゲームで” という
-            引きで締めると、プレイへの導線になります。］
+            ――かつてないほど記録が揺らいでいる。神世へ至る道が開かれた今、
+            22の系譜は、それぞれの理想を懸けて魂をぶつけ合う。
           </p>
-          <Note>※ この段落もプレースホルダです。</Note>
+          <p>
+            あなたもまた、ひとつの魂を率いる者。相棒となる
+            <strong className="text-gold-bright">ソウルユニット</strong>
+            を選び、神跡を巡る戦いへ足を踏み入れる。
+            この世界の続きを記録するのは、果たして誰の魂か。
+          </p>
+          <p className="text-muted">
+            ――その答えは、あなた自身のデッキで確かめてほしい。
+          </p>
+          <Note>
+            ※ プロローグの叩き台です。具体的な主人公・事件・舞台が決まれば、
+            それに合わせて書き換えられます。
+          </Note>
         </div>
       </Section>
     </>

@@ -58,12 +58,36 @@ export type Phase = {
 };
 
 export const PHASES: Phase[] = [
-  { name: "ドローフェーズ", en: "Draw", desc: "デッキからカードを1枚引く。ターンの始まり。" },
-  { name: "レコードフェーズ", en: "Record", desc: "リソースを生み出し、ユニットの召喚や魔法の準備を行う。" },
-  { name: "ソウルフェーズ", en: "Soul", desc: "ソウルユニットに関わる処理を行う、このゲーム独自の段階。" },
+  { name: "ドローフェーズ", en: "Draw", desc: "デッキからカードを1枚引く。ターンの始まり。（先攻1ターン目はスキップ）" },
+  { name: "レコードフェーズ", en: "Record", desc: "このターンに使うリソースを整え、盤面の準備を行う。" },
+  { name: "ソウルフェーズ", en: "Soul", desc: "ソウルユニットの覚醒など、魂に関わる処理を行う独自の段階。" },
+  { name: "アクティブフェーズ", en: "Active", desc: "場の全カードをアクティブ（行動可能）状態に戻す。" },
+  { name: "メインフェーズ", en: "Main", desc: "ユニットの召喚、魔法・アイテムの使用、ネクサスの設置などを行う。" },
   { name: "バトルフェーズ", en: "Battle", desc: "ユニットで相手を攻撃する。" },
   { name: "エンドフェーズ", en: "End", desc: "ターンを終了し、相手に手番を渡す。" },
 ];
+
+// 勝敗（GameManager.cs の定数準拠）
+export const VICTORY = {
+  initial: 6,
+  win: 12,
+  lose: 0,
+  initialHand: 5,
+};
+
+// ソウル効果の実例（救世神器 レイ）
+export const SOUL_EXAMPLE = {
+  name: "救世神器　レイ",
+  attribute: "無",
+  awaken: "自分フィールドに異なる系譜が5つ以上存在する",
+  effects: [
+    { tag: "【永続：S】", text: "自分は接続できるネクサスの上限を無視する。" },
+    {
+      tag: "【永続】",
+      text: "自分フィールド・墓地に存在するネクサス1枚につき、このカードは+1000/+1000。",
+    },
+  ],
+};
 
 export type CardKind = {
   name: string;

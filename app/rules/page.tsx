@@ -5,11 +5,13 @@ import {
   CARD_KINDS,
   EFFECT_LABELS,
   SOUL_EFFECT_LABELS,
+  VICTORY,
+  SOUL_EXAMPLE,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "遊び方",
-  description: "Sage Record - Soul Card の基本ルール。ターンの流れ、カードの種類、ソウルシステムを解説。",
+  description: "Soul Record - Soul Card の基本ルール。ターンの流れ、カードの種類、ソウルシステムを解説。",
 };
 
 export default function RulesPage() {
@@ -26,10 +28,27 @@ export default function RulesPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-lg border border-border bg-surface p-6">
             <h3 className="mb-3 font-serif text-lg font-bold text-gold-bright">
-              勝利条件
+              勝利条件 ― 神跡（しんせき）
             </h3>
             <p className="text-sm leading-relaxed text-muted">
-              ［相手の神跡（しんせき）をすべて破壊すれば勝利、など勝敗の条件をここに記載します。］
+              両プレイヤーは「神跡」を{" "}
+              <strong className="text-foreground">{VICTORY.initial}</strong>{" "}
+              から始めます。攻防を通じて神跡を動かし合い、
+            </p>
+            <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-muted">
+              <li>
+                自分の神跡を{" "}
+                <strong className="text-gold-bright">{VICTORY.win} まで高める</strong>
+                と勝利（＝神世への昇格）。
+              </li>
+              <li>
+                神跡が{" "}
+                <strong className="text-gold-bright">{VICTORY.lose} になる</strong>
+                と敗北（＝神世の崩壊）。
+              </li>
+            </ul>
+            <p className="mt-3 text-xs text-muted">
+              ライフを削り切る方式ではなく、0〜{VICTORY.win} の綱引きで勝敗が決まります。
             </p>
           </div>
           <div className="rounded-lg border border-border bg-surface p-6">
@@ -37,9 +56,13 @@ export default function RulesPage() {
               ゲームの準備
             </h3>
             <ol className="list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
-              <li>デッキ（［枚数］枚）を用意する</li>
+              <li>デッキを用意する</li>
               <li>ソウルユニットを1枚選び、裏向きでソウルゾーンに置く</li>
-              <li>手札を［枚数］枚引いてゲーム開始</li>
+              <li>
+                手札を{" "}
+                <strong className="text-foreground">{VICTORY.initialHand}</strong>{" "}
+                枚引いてゲーム開始（先攻の1ターン目はドローを行わない）
+              </li>
             </ol>
           </div>
         </div>
@@ -48,7 +71,7 @@ export default function RulesPage() {
       {/* ターンの流れ */}
       <Section title="ターンの流れ">
         <p className="mb-8 max-w-2xl leading-relaxed text-muted">
-          1ターンは5つのフェーズで進みます。
+          1ターンは7つのフェーズで進みます。
         </p>
         <ol className="space-y-3">
           {PHASES.map((p, i) => (
@@ -71,7 +94,6 @@ export default function RulesPage() {
             </li>
           ))}
         </ol>
-        <Note>※ 各フェーズの詳細な処理（コストの生成方法など）は確定後に追記します。</Note>
       </Section>
 
       {/* カードの種類 */}
@@ -134,8 +156,12 @@ export default function RulesPage() {
             盤面のソウルゾーンに置かれています。
           </p>
           <p className="mt-4 leading-relaxed text-muted">
-            ［裏向きのソウルが表になる条件・タイミングをここで説明します。
-            戦略の肝になる部分です。］
+            裏向きのソウルユニットは、各カードに定められた
+            <strong className="text-gold-bright">「覚醒」</strong>
+            によって表向きになります。覚醒には固有の
+            <strong className="text-foreground">覚醒条件</strong>を満たすか、
+            <strong className="text-foreground">覚醒コスト</strong>を支払う必要があります。
+            覚醒したソウルユニットは、本来の力と専用の S 効果を解き放ちます。
           </p>
           <div className="mt-6">
             <p className="mb-3 text-sm font-bold tracking-widest text-gold">
@@ -155,6 +181,27 @@ export default function RulesPage() {
               ソウルユニットは、通常の効果に加えてこれら専用の S 効果を持つことがあります。
               何をソウルに選ぶかで、デッキの戦い方が大きく変わります。
             </p>
+          </div>
+
+          {/* 実例カード */}
+          <div className="mt-8 rounded-lg border border-border bg-background/40 p-5">
+            <p className="mb-1 text-xs tracking-widest text-gold">EXAMPLE</p>
+            <p className="font-serif text-lg font-bold text-foreground">
+              {SOUL_EXAMPLE.name}
+              <span className="ml-2 align-middle text-xs text-muted">
+                ソウルユニット / {SOUL_EXAMPLE.attribute}属性
+              </span>
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              <span className="font-bold text-gold-bright">【覚醒】</span>
+              {SOUL_EXAMPLE.awaken}
+            </p>
+            {SOUL_EXAMPLE.effects.map((e) => (
+              <p key={e.tag} className="mt-1.5 text-sm leading-relaxed text-muted">
+                <span className="font-bold text-gold-bright">{e.tag}</span>
+                {e.text}
+              </p>
+            ))}
           </div>
         </div>
       </Section>
