@@ -37,7 +37,7 @@ export default function WorldPage() {
           <p>
             <strong className="text-foreground">12 の神跡</strong>
             を集めた者は、神への階段を昇り切り――至高の座
-            <strong className="text-gold-bright">〈神座（しんざ）〉</strong>
+            <strong className="text-gold-bright">〈神座（かむくら）〉</strong>
             へ到達して勝利する。
             すべての神跡を失った者は、神座への昇格資格を失い敗北する。
           </p>
