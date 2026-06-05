@@ -102,8 +102,8 @@ export default function WorldPage() {
       <Section title="物語のはじまり">
         <div className="space-y-4 leading-relaxed text-foreground/90">
           <p>
-            ――次元世界に、神座へ至る道が開かれた。漂う情報を奪い合い、
-            魂たちはそれぞれの理想を懸けて
+            ――次元世界に、神座へ至る道が開かれた。漂う情報を読み取り、
+            魂たちはそれぞれの理想を胸に
             <strong className="text-gold-bright">神征</strong>
             に身を投じる。
           </p>

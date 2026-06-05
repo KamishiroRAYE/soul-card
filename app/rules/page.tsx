@@ -65,14 +65,14 @@ export default function RulesPage() {
               <li>
                 「<strong className="text-foreground">ディメンションリンク</strong>」と宣言し、手札を{" "}
                 <strong className="text-foreground">{VICTORY.initialHand}</strong>{" "}
-                枚引いて開始（先攻ターン1はドローなし。後攻のみマリガン1回可・調整中）
+                枚引いて開始（先攻ターン1はドローなし。後攻のみ1度だけ、任意の枚数の手札を交換できる）
               </li>
             </ol>
           </div>
         </div>
         <Note>
           1試合の単位を「<strong className="text-foreground">神征（しんせい）</strong>」と呼びます。
-          ダメージは「<strong className="text-foreground">瑕疵（かし）</strong>」として扱われ、1瑕疵ごとに神跡が1減ります。
+          プレイヤーへのダメージは「<strong className="text-foreground">瑕疵（かし）</strong>」として扱われ、1瑕疵ごとに神跡が1減ります。
         </Note>
       </Section>
 
