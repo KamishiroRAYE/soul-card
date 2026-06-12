@@ -364,7 +364,7 @@ export const CARDS: GameCard[] = [
       text: "ユニット1体を選び、3000ダメージを与える。選んだユニットが自分のユニットの場合、代わりにそのユニットのHPを4000回復する。",
     },
   ]),
-  spell("m-dark-shot", "ダーク・ショット", 3, "Fire", "Magic", "NormalMagic", [
+  spell("m-dark-shot", "ダーク・ショット", 3, "Dark", "Magic", "NormalMagic", [
     { label: "【起動】", text: "ユニット1体を選び、そのユニットのHP-3000。" },
   ]),
   spell("m-thunder-blast", "サンダー・ブラスト", 4, "Neutral", "Magic", "NormalMagic", [
