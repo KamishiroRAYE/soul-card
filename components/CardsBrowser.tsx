@@ -8,6 +8,7 @@ import {
   attrColor,
   lineageName,
   KIND_LABEL,
+  SUBTYPE_LABEL,
   type GameCard,
   type CardKindKey,
 } from "@/lib/cards";
@@ -20,6 +21,8 @@ const KIND_FILTERS: { key: KindFilter; label: string }[] = [
   { key: "all", label: "すべて" },
   { key: "Unit", label: "ユニット" },
   { key: "EvolutionUnit", label: "進化" },
+  { key: "Magic", label: "魔法" },
+  { key: "Item", label: "アイテム" },
   { key: "Nexus", label: "ネクサス" },
 ];
 
@@ -136,7 +139,9 @@ function Chip({
 }
 
 function CardTile({ card }: { card: GameCard }) {
-  const isUnit = card.kind !== "Nexus";
+  const isUnit = card.kind === "Unit" || card.kind === "EvolutionUnit";
+  const hasLineages = card.lineages.length > 0;
+  const subTypeLabel = card.subType ? SUBTYPE_LABEL[card.subType] : undefined;
   return (
     <article className="tile flex flex-col rounded-lg border border-border bg-surface p-5">
       {/* ヘッダー */}
@@ -158,11 +163,13 @@ function CardTile({ card }: { card: GameCard }) {
             )}
           </p>
           <p className="mt-0.5 text-xs text-muted">
-            {KIND_LABEL[card.kind]}・{attrName(card.attribute)}属性・コスト
+            {subTypeLabel ?? KIND_LABEL[card.kind]}・{attrName(card.attribute)}属性・コスト
             {card.cost}
-            <span className="ml-2 text-foreground/70">
-              {card.lineages.map((l) => lineageName(l)).join(" / ")}系譜
-            </span>
+            {hasLineages && (
+              <span className="ml-2 text-foreground/70">
+                {card.lineages.map((l) => lineageName(l)).join(" / ")}系譜
+              </span>
+            )}
           </p>
         </div>
       </div>

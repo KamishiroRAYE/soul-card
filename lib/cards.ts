@@ -4,7 +4,7 @@
 
 import { ATTRIBUTES, LINEAGES } from "./data";
 
-export type CardKindKey = "Unit" | "EvolutionUnit" | "Nexus";
+export type CardKindKey = "Unit" | "EvolutionUnit" | "Nexus" | "Magic" | "Item";
 
 export type CardEffectLine = {
   label?: string; // 例：【接続時】【永続】。ルール効果は label 無し
@@ -17,7 +17,8 @@ export type GameCard = {
   cost: number;
   attribute: string; // ATTRIBUTES の en（Earth/Water/.../God）
   kind: CardKindKey;
-  lineages: string[]; // LINEAGES の en
+  lineages: string[]; // LINEAGES の en。魔法・アイテムは空配列
+  subType?: string; // 魔法・アイテムの種別（NormalMagic/PersistentMagic/NormalItem）
   hp?: number;
   atk?: number;
   burst?: number;
@@ -38,6 +39,15 @@ export const KIND_LABEL: Record<CardKindKey, string> = {
   Unit: "ユニット",
   EvolutionUnit: "進化ユニット",
   Nexus: "ネクサス",
+  Magic: "魔法",
+  Item: "アイテム",
+};
+
+// 魔法・アイテムの種別ラベル
+export const SUBTYPE_LABEL: Record<string, string> = {
+  NormalMagic: "通常魔法",
+  PersistentMagic: "永続魔法",
+  NormalItem: "通常アイテム",
 };
 
 // 神征1度ルール（全ネクサス共通の効果外テキスト）
@@ -90,6 +100,44 @@ function vanilla(
     atk,
     burst: 1,
   };
+}
+
+// 効果や複数系譜・バースト指定を持つユニット
+function unit(
+  id: string,
+  name: string,
+  cost: number,
+  attribute: string,
+  hp: number,
+  atk: number,
+  lineages: string[],
+  opts: { burst?: number; effects?: CardEffectLine[] } = {}
+): GameCard {
+  return {
+    id,
+    name,
+    cost,
+    attribute,
+    kind: "Unit",
+    lineages,
+    hp,
+    atk,
+    burst: opts.burst ?? 1,
+    effects: opts.effects,
+  };
+}
+
+// 魔法・アイテム（HP/ATK・系譜を持たない）
+function spell(
+  id: string,
+  name: string,
+  cost: number,
+  attribute: string,
+  kind: "Magic" | "Item",
+  subType: string,
+  effects: CardEffectLine[]
+): GameCard {
+  return { id, name, cost, attribute, kind, lineages: [], subType, effects };
 }
 
 export const CARDS: GameCard[] = [
@@ -253,6 +301,92 @@ export const CARDS: GameCard[] = [
   vanilla("v-beast", "群れ成す獣", 1, "Neutral", 1000, 1000, "Beast"),
   vanilla("v-wraith", "死霊", 1, "Dark", 1000, 0, "Undead"),
   vanilla("v-zombie", "生ける屍", 2, "Dark", 1000, 2000, "Undead"),
+
+  // ── 追加ユニット（バニラ） ──
+  unit("v-chimera", "合成獣キマイラ", 5, "Earth", 7000, 3000, ["Magi", "Beast"]),
+  unit("v-wild-beast", "野生の獣", 2, "Earth", 1000, 1500, ["Beast"]),
+  unit("v-lone-wolf", "一匹狼", 3, "Earth", 2000, 3000, ["Beast"]),
+  unit("v-hatchling", "幼竜", 2, "Neutral", 2000, 1000, ["Dragon"]),
+  unit("v-degraded-dragon", "劣化竜", 3, "Neutral", 4000, 1000, ["Dragon"]),
+  unit("v-twin-dragon", "双剣竜", 5, "Wind", 5000, 2000, ["Dragon"], { burst: 2 }),
+  unit("v-breeze-fairy", "そよ風の妖精", 1, "Wind", 1000, 500, ["Fairy"]),
+  unit("v-thorn-fairy", "茨の妖精", 2, "Earth", 1000, 2000, ["Fairy"]),
+  unit("v-wandering-soul", "彷徨う魂", 3, "Dark", 2000, 2000, ["Undead"]),
+  unit("v-baby-angel", "ベビーエンジェル", 1, "Light", 1000, 500, ["Angel"]),
+  unit("v-light-angel", "光翼の天使", 3, "Light", 4000, 1000, ["Angel"]),
+  unit("v-villager", "村人", 1, "Neutral", 1000, 1000, ["Human"]),
+  unit("v-light-factor", "光の因子", 2, "Light", 2000, 1000, ["Chaos"]),
+  unit("v-dark-factor", "闇の因子", 2, "Dark", 1000, 2000, ["Chaos"]),
+  unit("v-chaos-soul", "混沌の魂", 3, "Dark", 3000, 3000, ["Chaos"]),
+
+  // ── 追加ユニット（効果持ち） ──
+  unit("u-magic-recorder", "マジック・レコーダー", 4, "Neutral", 4000, 2000, ["Magi", "Memory"], {
+    effects: [
+      { label: "【召喚時】", text: "自分の墓地の魔法カード1枚を手札に加える。" },
+    ],
+  }),
+  unit("u-scapegoat", "スケープゴート", 1, "Earth", 1000, 0, ["Beast"], {
+    effects: [
+      {
+        label: "【永続】",
+        text: "自分のユニット1体のみがダメージを受ける場合、そのダメージは代わりにこのカードが受ける。",
+      },
+    ],
+  }),
+  unit("u-beast-tamer", "ビーストテイマー", 3, "Earth", 3000, 0, ["Human", "Beast"], {
+    effects: [
+      { label: "【永続】", text: "自分フィールドの「獣」の系譜を持つユニット全てのATK+1000。" },
+    ],
+  }),
+  unit("u-dragon-priestess", "竜の巫女", 3, "Neutral", 2000, 0, ["Human", "Dragon"], {
+    effects: [{ label: "【永続】", text: "「竜」の系譜を持つユニットのコスト-2。" }],
+  }),
+
+  // ── 魔法 ──
+  spell("m-fireball", "ファイアー・ボール", 3, "Fire", "Magic", "NormalMagic", [
+    { label: "【起動】", text: "ユニット1体を選び、5000ダメージを与える。" },
+  ]),
+  spell("m-water-splash", "ウォーター・スプラッシュ", 3, "Water", "Magic", "NormalMagic", [
+    { label: "【起動】", text: "相手フィールドのユニット全てに、2000ダメージを与える。" },
+  ]),
+  spell("m-wind-edge", "ウィンド・エッジ", 3, "Wind", "Magic", "NormalMagic", [
+    {
+      label: "【起動】",
+      text: "ユニット1体を選び、3500ダメージを与える。その後、他のユニット1体に1500ダメージを与える。",
+    },
+  ]),
+  spell("m-earth-spike", "アース・スパイク", 3, "Earth", "Magic", "NormalMagic", [
+    { label: "【起動】", text: "相手のインアクティブ状態のユニット全てに、3000ダメージを与える。" },
+  ]),
+  spell("m-holy-breath", "ホーリー・ブレス", 3, "Light", "Magic", "NormalMagic", [
+    {
+      label: "【起動】",
+      text: "ユニット1体を選び、3000ダメージを与える。選んだユニットが自分のユニットの場合、代わりにそのユニットのHPを4000回復する。",
+    },
+  ]),
+  spell("m-dark-shot", "ダーク・ショット", 3, "Fire", "Magic", "NormalMagic", [
+    { label: "【起動】", text: "ユニット1体を選び、そのユニットのHP-3000。" },
+  ]),
+  spell("m-thunder-blast", "サンダー・ブラスト", 4, "Neutral", "Magic", "NormalMagic", [
+    {
+      label: "【起動】",
+      text: "ユニット1体に4000ダメージを与える。この効果でダメージを与えたユニットはこのターンの間、アタック/ブロックできない。",
+    },
+  ]),
+  spell("m-savior-journey", "救世の旅路", 5, "Neutral", "Magic", "PersistentMagic", [
+    {
+      label: "【起動】",
+      text: "このカード名の【起動】効果は1ターンに1度しか使用できない。自分のSユニットが「救世神器　レイ」の場合、このカードをインアクティブにして発動出来る。デッキの上から3枚を確認し、ネクサスカード１枚を手札に加え、残ったカードを墓地へ送る。",
+    },
+  ]),
+
+  // ── アイテム ──
+  spell("i-seal-stone", "魔封石", 3, "Neutral", "Item", "NormalItem", [
+    {
+      label: "【起動】",
+      text: "自分メインフェイズ開始時のみ、このカードを使用できる。このターンの間、フィールドの魔法カードの効果は無効になる。",
+    },
+  ]),
 ];
 
 // コスト→名前で安定ソート
