@@ -3,6 +3,7 @@ export const NAV_LINKS = [
   { href: "/world", label: "世界観" },
   { href: "/rules", label: "遊び方" },
   { href: "/cards", label: "カードリスト" },
+  { href: "/status", label: "開発状況" },
   { href: "/download", label: "ダウンロード" },
 ];
 
