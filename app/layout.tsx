@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: `${SITE.title} | ${SITE.titleJa}`,
     template: `%s | ${SITE.title}`,
   },
-  description: `${SITE.titleJa}は、22の系譜と8つの属性、そして独自の「ソウルユニット」システムを備えた個人開発のオリジナルTCGです。`,
+  description: `${SITE.titleJa}は、24の系譜と8つの属性、そして独自の「ソウルユニット」システムを備えた個人開発のオリジナルTCGです。`,
 };
 
 export default function RootLayout({

@@ -12,7 +12,7 @@ const FEATURES = [
     body: "ライフポイントの代わりとなる六角形のノード。攻防の駆け引きが、そのまま世界の理＝神跡を巡る戦いになる。",
   },
   {
-    title: "22系譜 × 8属性",
+    title: "24系譜 × 8属性",
     body: "騎士・竜・天使・深淵・混沌……。広大な系譜と属性の組み合わせが、無数のデッキと物語を生み出す。",
   },
 ];
@@ -98,7 +98,7 @@ export default function Home() {
       {/* 系譜 */}
       <section className="mx-auto max-w-6xl px-5 py-20">
         <h2 className="heading-rule mb-8 font-serif text-2xl font-bold tracking-wide text-gold-bright">
-          22の系譜
+          24の系譜
         </h2>
         <div className="flex flex-wrap gap-2">
           {LINEAGES.map((l) => (

@@ -10,5 +10,5 @@ export const NAV_LINKS = [
 export const SITE = {
   title: "Soul Record - Soul Card",
   titleJa: "ソウルレコード・ソウルカード",
-  tagline: "22の系譜が織りなす、オリジナルTCG",
+  tagline: "24の系譜が織りなす、オリジナルTCG",
 };
