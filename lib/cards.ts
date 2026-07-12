@@ -508,6 +508,237 @@ export const CARDS: GameCard[] = [
   vanilla("n-draugr", "ドラウグ", 2, "Dark", 3000, 1000, "Undead"),
   vanilla("n-kraken", "クラーケン", 8, "Water", 11000, 8000, "Ocean"),
   vanilla("n-mara", "マーラ", 2, "Dark", 2000, 2500, "Demon"),
+
+  // ── ギリシャ神話バッチ（20種） ──
+  unit("g-chimera", "キマイラ", 6, "Wind", 6000, 7000, ["Beast", "Spirit"]),
+  vanilla("g-minotaur", "ミノタウロス", 4, "Earth", 4000, 5000, "Beast"),
+  vanilla("g-griffon", "グリフォン", 4, "Wind", 4000, 5000, "Ether"),
+  unit("g-harpy", "ハルピュイア", 3, "Wind", 2500, 4000, ["Avian"], { burst: 2 }),
+  unit("g-scylla", "スキュラ", 5, "Water", 4000, 3000, ["Ocean"], { burst: 2 }),
+  unit("g-hydra", "ヒュドラ", 7, "Water", 9000, 7000, ["Dragon", "Mystic"], {
+    effects: [{ label: "【永続】", text: "このカードは炎属性以外のカードによるダメージを受けない。" }],
+  }),
+  unit("g-cerberus", "ケルベロス", 8, "Dark", 9000, 6000, ["Beast", "Underworld"], {
+    effects: [{ label: "【永続】", text: "相手は墓地からユニットを召喚できない。" }],
+  }),
+  unit("g-medusa", "メドゥーサ", 5, "Earth", 5000, 3000, ["Mystic"], {
+    effects: [{ label: "【アタック時】", text: "このユニットをブロックしたユニットの攻撃力は0になる。" }],
+  }),
+  unit("g-manticore", "マンティコア", 5, "Fire", 6000, 5000, ["Beast"], {
+    effects: [
+      { label: "【永続】", text: "このカードが「真人」の系譜を持つユニットと戦闘を行う場合、このカードの攻撃力は倍になる。" },
+    ],
+  }),
+  unit("g-siren", "セイレーン", 3, "Water", 2500, 2000, ["Ocean"], {
+    effects: [
+      {
+        label: "【召喚時】",
+        text: "相手フィールドのユニット1体を対象として発動できる。そのユニットをインアクティブにする。",
+      },
+    ],
+  }),
+  unit("g-talos", "タロス", 5, "Neutral", 9000, 4000, ["Human"], {
+    effects: [{ label: "【永続】", text: "このカードは、可能なら必ずブロックしなければならない。" }],
+  }),
+  unit("g-echidna", "エキドナ", 6, "Dark", 10000, 3000, ["Primordial"], {
+    effects: [{ label: "【永続】", text: "自分のLV.5～8のユニットの召喚コスト-2。" }],
+  }),
+  unit("g-ladon", "ラドン", 7, "Earth", 10000, 4500, ["Dragon"], {
+    effects: [{ label: "【永続】", text: "このカードは、インアクティブ状態でもブロックできる。" }],
+  }),
+  unit("g-mormo", "モルモー", 3, "Dark", 3000, 1500, ["Demon"], {
+    effects: [
+      {
+        label: "【アタック時】",
+        text: "発動できる。このユニットがブロックしたユニットに戦闘でダメージを与えた場合、その数値分このカードのHPを回復する。",
+      },
+    ],
+  }),
+  unit("g-banshee", "バンシー", 3, "Dark", 2000, 3000, ["Fairy"], {
+    effects: [
+      {
+        label: "【召喚時】",
+        text:
+          "発動できる。次の自分のターン開始時まで、以下の効果を適用する。\n" +
+          "●自分フィールドのユニットがダメージを受ける場合、1度だけデッキの上からカードを1枚墓地へ送ることで、そのダメージを無効にする。",
+      },
+    ],
+  }),
+  unit("g-redcap", "レッドキャップ", 3, "Dark", 1500, 3000, ["Fairy"], {
+    effects: [
+      {
+        label: "【召喚時】",
+        text: "相手フィールドのユニット1体を対象として発動できる。そのユニットに、このカードの攻撃力分のダメージを与える。",
+      },
+    ],
+  }),
+  unit("g-kelpie", "ケルピー", 4, "Water", 7000, 6000, ["Beast", "Demon"], {
+    effects: [{ label: "【破壊時】", text: "発動する。自分は手札を1枚捨てる。" }],
+  }),
+  vanilla("g-wyvern", "ワイバーン", 4, "Wind", 4000, 5000, "Dragon"),
+  unit("g-basilisk", "バジリスク", 6, "Dark", 6000, 3000, ["Dragon", "Mystic"], {
+    effects: [{ label: "【永続】", text: "このユニットと戦闘を行ったユニットは破壊される。" }],
+  }),
+  unit("g-cockatrice", "コカトリス", 4, "Dark", 3000, 3000, ["Beast", "Mystic"], {
+    effects: [{ label: "【召喚時】", text: "発動できる。デッキから「バジリスク」1枚を手札に加える。" }],
+  }),
+
+  // ── 中国神話バッチ（9種） ──
+  vanilla("c-taotie", "饕餮", 7, "Earth", 11000, 6000, "Chaos"),
+  unit("c-qiongqi", "窮奇", 5, "Wind", 5500, 6500, ["Beast", "Chaos"]),
+  vanilla("c-hundun", "渾沌", 6, "Neutral", 7500, 6500, "Chaos"),
+  vanilla("c-chiyou", "蚩尤", 7, "Water", 7000, 9000, "Raiden"),
+  unit("c-hakutaku", "白澤", 5, "Light", 4000, 1000, ["Mystic"], {
+    effects: [{ label: "【召喚時】", text: "発動できる。自分は2枚ドローする。" }],
+  }),
+  unit("c-qilin", "麒麟", 6, "Light", 9000, 3000, ["Beast", "Mystic"], {
+    burst: 0,
+    effects: [{ label: "【永続】", text: "お互いのユニットはアタックできない。" }],
+  }),
+  unit("c-hiderigami", "ひでりがみ", 4, "Fire", 3000, 3000, ["Undead"], {
+    effects: [
+      { label: "【起動】", text: "1ターンに1度、水属性カード1枚を対象として発動できる。その効果を無効にする。" },
+    ],
+  }),
+  vanilla("c-houkou", "彭侯", 3, "Earth", 4000, 2500, "Spirit"),
+  unit("c-kada", "化蛇", 4, "Water", 4000, 3000, ["Dragon"], {
+    effects: [{ label: "【召喚時】", text: "発動できる。相手のデッキの上から5枚を墓地へ送る。" }],
+  }),
+
+  // ── インド神話バッチ（8種） ──
+  unit("in-naga", "ナーガ", 5, "Water", 7000, 4000, ["Guardian", "Spirit", "Dragon"]),
+  unit("in-rakshasa", "ラークシャサ", 6, "Dark", 6000, 8000, ["Demon", "Spirit"]),
+  unit("in-garuda", "ガルダ", 8, "Wind", 4000, 10000, ["Undead", "Avian", "Ether"], {
+    effects: [
+      { label: "【永続】", text: "このカードは破壊されない。" },
+      {
+        label: "【アタック時】",
+        text: "発動できる。相手フィールドの「竜」の系譜を持つユニット1体を破壊する。",
+      },
+    ],
+  }),
+  unit("in-asura", "アスラ", 6, "Fire", 6000, 4000, ["Demon"], { burst: 2 }),
+  unit("in-vritra", "ヴリトラ", 8, "Dark", 9000, 4000, ["Dragon"], {
+    effects: [
+      { label: "【永続】", text: "このカードの属性は「炎」としても扱う。" },
+      { label: "【永続】", text: "フィールドの水属性ユニットの最大HP-4000。" },
+    ],
+  }),
+  vanilla("in-makara", "マカラ", 4, "Water", 5000, 4000, "Ocean"),
+  unit("in-vetala", "ヴェターラ", 4, "Dark", 3000, 0, ["Undead"], {
+    effects: [
+      {
+        label: "【召喚時】",
+        text: "自分の墓地のユニット1体を対象として発動できる。このカードの攻撃力はそのユニットと同じになる。",
+      },
+    ],
+  }),
+  vanilla("in-pishacha", "ピシャーチャ", 2, "Dark", 2000, 2000, "Undead"),
+
+  // ── 伝説の幻獣バッチ（5種） ──
+  unit("l-azidahaka", "アジ・ダハーカ", 8, "Dark", 9000, 9000, ["Magi", "Avian", "Dragon"]),
+  unit("l-behemoth", "ベヒモス", 8, "Earth", 10000, 10000, ["Beast", "GrandEarth"]),
+  unit("l-simurgh", "シムルグ", 7, "Wind", 10000, 4000, ["Avian", "Ether"], {
+    effects: [{ label: "【召喚時】", text: "デッキから「シムルグの羽根」1枚を手札に加える。" }],
+  }),
+  unit("l-leviathan", "リヴァイアサン", 8, "Water", 7000, 7000, ["Dragon", "Ocean", "Abyss"], {
+    effects: [{ label: "【永続】", text: "このカードは戦闘ダメージを受けない。" }],
+  }),
+  spell("l-simurgh-feather", "シムルグの羽根", 4, "Wind", "Item", "NormalItem", [
+    { label: "【起動】", text: "デッキから「シムルグ」カード1枚を手札に加える。" },
+  ]),
+
+  // ── アラビア神話バッチ（3種） ──
+  vanilla("a-roc", "ロック鳥", 6, "Wind", 8500, 5500, "Avian"),
+  vanilla("a-golem", "ゴーレム", 4, "Earth", 7000, 2000, "Mystic"),
+  unit("a-ifrit", "イフリート", 5, "Fire", 4000, 5000, ["Spirit"], {
+    effects: [{ label: "【永続】", text: "このカードは炎属性カードによるダメージを受けない。" }],
+  }),
+
+  // ── 未確認生物バッチ（4種） ──
+  vanilla("cr-gevaudan", "ジェヴォーダンの獣", 5, "Dark", 5000, 7000, "Beast"),
+  vanilla("cr-kobold", "コボルト", 2, "Earth", 2000, 2500, "Fairy"),
+  vanilla("cr-werewolf", "狼男", 4, "Dark", 4000, 5000, "Beast"),
+  unit("cr-strigoi", "ストリゴイ", 4, "Dark", 3000, 4000, ["Magi", "Undead"]),
+
+  // ── メソポタミア神話バッチ（5種） ──
+  unit("m-anzu", "アンズー", 6, "Wind", 6000, 8000, ["Raiden", "Ether"]),
+  unit("m-tiamat", "ティアマト", 12, "Water", 20000, 7000, ["Chaos", "Primordial", "Ocean"], {
+    effects: [
+      { text: "このカードの効果は12コスト支払って召喚している場合のみ、使用できる。" },
+      {
+        label: "【召喚時】",
+        text: "発動できる。レコードゾーンのカード全てをアクティブ状態にする。その後、デッキから種類(ユニット・魔法・アイテム・ネクサス)の異なるカードをそれぞれ1枚まで手札に加えることができる。",
+      },
+    ],
+  }),
+  unit("m-pazuzu", "パズズ", 8, "Wind", 9000, 7000, ["Guardian", "Demon"], {
+    effects: [{ label: "【永続】", text: "このカードが「悪魔」の系譜を持つユニットによって受けるダメージは半分になる。" }],
+  }),
+  unit("m-humbaba", "フンババ", 7, "Earth", 10000, 3000, ["Guardian"], {
+    effects: [{ label: "【永続】", text: "相手フィールドのLv.6以下のユニットはアタックできない。" }],
+  }),
+  unit("m-lamashtu", "ラマシュトゥ", 6, "Dark", 6500, 5000, ["Demon", "Mystic"], {
+    effects: [{ label: "【召喚時】", text: "発動できる。相手フィールドのLv.4以下のユニットを3体まで墓地へ送る。" }],
+  }),
+
+  // ── スラヴ神話バッチ（3種） ──
+  vanilla("s-rusalka", "ルサールカ", 3, "Water", 4000, 2500, "Undead"),
+  vanilla("s-leshy", "レーシー", 3, "Earth", 5000, 2000, "Spirit"),
+  unit("s-babayaga", "バーバ・ヤーガ", 5, "Dark", 5000, 4000, ["Magi", "Mystic"], {
+    effects: [
+      {
+        label: "【召喚時】",
+        text:
+          "以下の効果から1つを選んで発動できる。\n" +
+          "●自分は2枚ドローする。\n" +
+          "●デッキの上から5枚を墓地へ送る。",
+      },
+    ],
+  }),
+
+  // ── 世界神話バッチ（8種） ──
+  unit("w-wendigo", "ウェンディゴ", 5, "Dark", 4000, 2000, ["Spirit"], {
+    effects: [
+      { label: "【永続】", text: "このカードは、相手の効果の対象にならない。" },
+      { label: "【ブロック時】", text: "発動する。このカードをアタックしたユニットに装備する。" },
+      {
+        label: "【永続】",
+        text: "このカードを装備したユニットは、アタック・ブロックできず、自分・相手のプライムフェイズ開始時に100ダメージを受ける。",
+      },
+    ],
+  }),
+  unit("w-tzitzimitl", "ツィツィミトル", 6, "Dark", 8000, 6000, ["Demon", "Ether"], {
+    effects: [
+      {
+        label: "【フェーズ開始時】",
+        text: "自分のドローフェイズ、ドロー前に手札を1枚捨てて発動できる。このターンの通常ドローの枚数は2枚になる。",
+      },
+    ],
+  }),
+  unit("w-ahuizotl", "アウィツォトル", 1, "Water", 1000, 0, ["Human"], {
+    effects: [
+      {
+        label: "【起動】",
+        text: "手札のこのカードを相手に見せて発動できる。このカードのレベルを1つ上げる（最大7まで）。",
+      },
+      {
+        label: "【永続】",
+        text:
+          "このカードは、このカードのレベルによって以下の効果を得る。\n" +
+          "●1以上：このカードのLv.1につき、このカードを+1000/+1000。\n" +
+          "●5以上：このカード以外の自分フィールドの全てのユニットの攻撃力+2000。\n" +
+          "●7：バースト+1。",
+      },
+    ],
+  }),
+  unit("w-camazotz", "カマソッツ", 4, "Dark", 2500, 4500, ["Underworld"], {
+    effects: [{ label: "【召喚時】", text: "発動できる。お互いは、自分フィールドのユニット1体を破壊する。" }],
+  }),
+  vanilla("w-chupacabra", "チュパカブラ", 2, "Dark", 3000, 2000, "Mystic"),
+  unit("w-taniwha", "タニファ", 5, "Water", 8500, 3500, ["Guardian", "Ocean"]),
+  vanilla("w-bunyip", "バニップ", 4, "Water", 5500, 3500, "Mystic"),
+  vanilla("w-aigamucha", "アイガムシャ", 3, "Earth", 3500, 3000, "Demon"),
 ];
 
 // コスト→名前で安定ソート

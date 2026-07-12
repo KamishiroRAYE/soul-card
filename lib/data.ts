@@ -46,7 +46,7 @@ export const LINEAGES: Lineage[] = [
   { name: "記憶", en: "Memory" },
   { name: "深淵", en: "Abyss" },
   { name: "混沌", en: "Chaos" },
-  { name: "天空", en: "Sky" },
+  { name: "天空", en: "Ether" },
   { name: "大地", en: "GrandEarth" },
   { name: "海洋", en: "Ocean" },
   { name: "冥府", en: "Underworld" },
