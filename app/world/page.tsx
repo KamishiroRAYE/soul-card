@@ -4,7 +4,7 @@ import { ATTRIBUTES, LINEAGES } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "世界観",
-  description: "8つの属性、24の系譜が織りなす Soul Record - Soul Card の世界観。",
+  description: "8つの属性、25の系譜が織りなす Soul Record - Soul Card の世界観。",
 };
 
 export default function WorldPage() {
@@ -13,7 +13,7 @@ export default function WorldPage() {
       <PageHeader
         eyebrow="WORLD & STORY"
         title="世界観"
-        lead="魂が記録され、語り継がれる世界。8つの属性と24の系譜が、終わらない物語を紡いでいく。"
+        lead="魂が記録され、語り継がれる世界。8つの属性と25の系譜が、終わらない物語を紡いでいく。"
       />
 
       <Section title="この世界について">
@@ -75,7 +75,7 @@ export default function WorldPage() {
         </div>
       </Section>
 
-      <Section title="24の系譜">
+      <Section title="25の系譜">
         <p className="mb-8 max-w-2xl leading-relaxed text-muted">
           この世界に生きる存在たちは「系譜（けいふ）」と呼ばれる種族・勢力に属します。
           系譜は同じ物語を共有し、ときに手を取り、ときに激しく対立します。

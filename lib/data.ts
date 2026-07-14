@@ -26,7 +26,7 @@ export type Lineage = {
   enLabel?: string; // 表示用の外国語名（en と異なる場合のみ。例：巨人＝Titan）
 };
 
-// 24系譜（Unity の Lineage enum 準拠）
+// 25系譜（Unity の Lineage enum 準拠）
 export const LINEAGES: Lineage[] = [
   { name: "守護", en: "Guardian" },
   { name: "魔導", en: "Magi" },
@@ -52,6 +52,7 @@ export const LINEAGES: Lineage[] = [
   { name: "冥府", en: "Underworld" },
   { name: "雷電", en: "Raiden" },
   { name: "巨人", en: "Giant", enLabel: "Titan" },
+  { name: "蟲", en: "Insect" },
 ];
 
 export type Phase = {
