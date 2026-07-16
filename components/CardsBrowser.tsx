@@ -12,10 +12,11 @@ import {
   type GameCard,
   type CardKindKey,
 } from "@/lib/cards";
-import { ATTRIBUTES } from "@/lib/data";
+import { ATTRIBUTES, LINEAGES } from "@/lib/data";
 
 type KindFilter = "all" | CardKindKey;
 type AttrFilter = "all" | string;
+type LineageFilter = "all" | string;
 
 const KIND_FILTERS: { key: KindFilter; label: string }[] = [
   { key: "all", label: "すべて" },
@@ -26,18 +27,25 @@ const KIND_FILTERS: { key: KindFilter; label: string }[] = [
   { key: "Nexus", label: "ネクサス" },
 ];
 
+// 実際にカードで使われている系譜のみ表示（LINEAGES の順序を維持）
+const LINEAGE_FILTERS = LINEAGES.filter((l) =>
+  CARDS.some((c) => c.lineages.includes(l.en))
+);
+
 export default function CardsBrowser() {
   const [kind, setKind] = useState<KindFilter>("all");
   const [attr, setAttr] = useState<AttrFilter>("all");
+  const [lineage, setLineage] = useState<LineageFilter>("all");
 
   const cards = useMemo(() => {
     const filtered = CARDS.filter(
       (c) =>
         (kind === "all" || c.kind === kind) &&
-        (attr === "all" || c.attribute === attr)
+        (attr === "all" || c.attribute === attr) &&
+        (lineage === "all" || c.lineages.includes(lineage))
     );
     return getSortedCards(filtered);
-  }, [kind, attr]);
+  }, [kind, attr, lineage]);
 
   return (
     <div>
@@ -66,6 +74,20 @@ export default function CardsBrowser() {
               dot={a.color}
             >
               {a.name}
+            </Chip>
+          ))}
+        </FilterRow>
+        <FilterRow label="系譜">
+          <Chip active={lineage === "all"} onClick={() => setLineage("all")}>
+            すべて
+          </Chip>
+          {LINEAGE_FILTERS.map((l) => (
+            <Chip
+              key={l.en}
+              active={lineage === l.en}
+              onClick={() => setLineage(l.en)}
+            >
+              {l.name}
             </Chip>
           ))}
         </FilterRow>
