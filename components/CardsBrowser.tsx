@@ -231,7 +231,7 @@ function CardTile({
           <button
             type="button"
             onClick={() => onZoom({ src, name: card.name })}
-            className="group relative block aspect-[4/3] w-full overflow-hidden bg-background"
+            className="group relative block aspect-square w-full overflow-hidden bg-background"
             title="クリックで拡大"
             aria-label={`${card.name} のイラストを拡大`}
           >
@@ -241,7 +241,7 @@ function CardTile({
               alt={`${card.name} のイラスト`}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
             />
             <span className="pointer-events-none absolute right-2 top-2 rounded bg-background/70 px-1.5 py-0.5 text-[0.6rem] tracking-widest text-gold-bright opacity-0 transition-opacity group-hover:opacity-100">
               拡大
@@ -249,7 +249,7 @@ function CardTile({
           </button>
         ) : (
           <div
-            className="flex aspect-[4/3] w-full items-center justify-center bg-surface-2/40"
+            className="flex aspect-square w-full items-center justify-center bg-surface-2/40"
             style={{
               backgroundImage: `linear-gradient(135deg, ${attrColor(
                 card.attribute
