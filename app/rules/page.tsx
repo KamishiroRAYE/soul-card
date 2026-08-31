@@ -105,7 +105,7 @@ export default function RulesPage() {
       {/* ターンの流れ */}
       <Section title="ターンの流れ">
         <p className="mb-8 max-w-2xl leading-relaxed text-muted">
-          1ターンは7つのフェーズで進みます。
+          1ターンは8つのフェーズで進みます。
         </p>
         <ol className="space-y-3">
           {PHASES.map((p, i) => (
