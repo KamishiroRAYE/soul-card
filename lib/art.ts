@@ -38,6 +38,7 @@ export const ART: Record<string, string> = {
   "チュパカブラ": "9fc0339d342a4638.webp",
   "ツィツィミトル": "d1d0008ad228a409.webp",
   "ティアマト": "5c84d570bbfbd2cf.webp",
+  "ティターン・ネクサス": "cd0fc43508881c51.webp",
   "デビル・ネクサス": "25345a1a30979819.webp",
   "ドラウグ": "a2e2191ada31603b.webp",
   "ドラゴン・ネクサス": "ea2b4668e0c2a059.webp",
