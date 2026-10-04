@@ -130,7 +130,7 @@ export const CARD_KINDS: CardKind[] = [
   {
     name: "魔法",
     desc: "様々な効果を発動するカード。",
-    subtypes: ["通常魔法", "永続魔法", "付与魔法"],
+    subtypes: ["通常魔法", "永続魔法", "装備魔法"],
   },
   {
     name: "アイテム",
