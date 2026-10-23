@@ -68,7 +68,6 @@ export default function WorldPage() {
                     {a.en}
                   </span>
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{a.desc}</p>
               </div>
             </div>
           ))}

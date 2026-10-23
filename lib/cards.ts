@@ -78,7 +78,8 @@ function nexus(
     cost: 3,
     attribute,
     kind: "Nexus",
-    lineages: [lineageEn],
+    // ネクサス自体は系譜を持たない（参照先の系譜は効果テキスト内に記載）
+    lineages: [],
     effects,
   };
 }

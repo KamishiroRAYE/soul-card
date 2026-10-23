@@ -51,8 +51,8 @@ const DONE: { title: string; body: string }[] = [
 // 開発中・今後の予定
 const PLANNED: { title: string; body: string }[] = [
   {
-    title: "対人戦",
-    body: "オンライン／同一端末での対人対戦は開発予定です。現在の対戦はAI戦のみとなります。",
+    title: "対人戦（オンライン）",
+    body: "オンライン対人戦の実装を進めています（サーバー権威型の通信基盤を構築中）。現在プレイできる対戦はAI戦です。",
   },
   {
     title: "AIの強化",
